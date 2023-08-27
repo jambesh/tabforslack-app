@@ -58,6 +58,6 @@ Toubel Shoot : it has the log module, if you run into issue, enable logging and 
 While I used this App in production grade, you can do further customize and add new features as per your need.
 
 # Future Additions:
-* Ability to Audit the performance of the workbook from slack and suggest improvement .   
-  Ability to migrate content from one server to other without leaving slack.   
-  Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On).  
+__  Ability to Audit the performance of the workbook from slack and suggest improvement .   
+__  Ability to migrate content from one server to other without leaving slack.
+__  Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On).  
