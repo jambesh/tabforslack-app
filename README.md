@@ -3,7 +3,9 @@
 
 
 # tabforslack
-Tableau For Slack - Perform Tableau Operations from Slack . What you can do with the inial version ?
+Tableau For Slack, Allow you to Perform Tableau Operations from Slack on multiple server and site without switching between server and site.   
+
+What you can do with the inial version ?
 1.	Ability to create project on any server and any site without switching between server and site.
 2.	Ability to import ad group to different servers and site without swithching server and site.
 3.	Ability to grant role to a project (like Explorer/Publisher/Admin etc) without switching server and site and also without multiple permission selection like switching to project tab/workbook tab/data source tab - Explorer will automaticall grant all require permission at project/workbook/data source level etc.
