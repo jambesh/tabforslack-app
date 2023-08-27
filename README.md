@@ -7,16 +7,16 @@ Tableau For Slack,allow you to Perform Tableau Operations from Slack on multiple
 
 ### What you can do with the inial version ?
 1.	Ability to create project on any server and any site without switching between server and site.
-2.	Ability to import ad group to different servers and site without swithching server and site.
+2.	Ability to import ad group to different server and site without swithching server and site.
 3.	Ability to grant role to a project (like Explorer/Publisher/Admin etc) without switching server and site and also without multiple permission selection like switching to project tab/workbook tab/data source tab - Explorer will automaticall grant all require permission at project/workbook/data source level etc.
-4.	Analyze workbook any server and site and generate PDF right within the slack to download it for reference, this include the number of dashboards, sheets, fields,calculations etc.
+4.	Analyze workbook on any server and site and generate PDF result right within the slack for reference, this include the number of dashboards, sheets, fields,calculations etc.
 Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
-# App Configurations Steps :
+## App Configurations Steps :
 1.	Create a Slack App
 2.	Download the python app files/env file from github
 3.	Configure the Tableau and Slack Environment info in the downloaded config file.
 4.	Run and test the App locally or on a dedicated virutal Machine
-# Create Slack App :
+## Create Slack App :
 1.	Navigate to https://api.slack.com/apps
 2.	Create a new Slack App and select create from scratch , give it a name like tabforslack or name you like it, select the workspace where you will create the app if you multiple workspace like sandbox/production. then create.
 3.	Since our goal is to create the slack app which will run within the company firewall , we don't need a dedicate webserver to run the slack bot we can use SOCKET Mode to run it , to enable socket mode, click on socket mode on the left hand side and then enable socket mode, this will ask the token name to be provided give it a name like socket-app-token and generate . (you can copy the token for later reference, you can always show /copy this info later).
