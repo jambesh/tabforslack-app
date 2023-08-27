@@ -16,7 +16,8 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 3.	Since our goal is to create the slack app which will run within the company firewall , we don't need a dedicate webserver to run the slack bot we can use SOCKET Mode to run it , to enable socket mode, click on socket mode on the left hand side and then enable socket mode, this will ask the token name to be provided give it a name like socket-app-token and generate . (you can copy the token for later reference, you can always show /copy this info later).
 4.	there are 4 sections we need to fill after this with the require info to create our Slack App for Tableau #Slash Command : Click on the Basic information from the left side, then click on the Feature & Functionality and then click Slash Command (Baic Info ->Feature and Functionlity ->Slash Command) Provide a slash command name which you will use it to invoke it from the slack like (/tabforslack or /taboperations or /tabops etc ..) Give a short Description .
    
-#Events Subscriptions Basic Informations >App Feature and Functionality -->Event Subscription OR Directly click on the Event Subscription from left . ##ENABLE EVENTS TURN ON By default it is off. Enable following Events /Subscribe to Bots Events :  
+#Events Subscriptions Basic Informations >App Feature and Functionality -->Event Subscription OR Directly click on the Event Subscription from left . 
+##ENABLE EVENTS TURN ON By default it is off. Enable following Events /Subscribe to Bots Events :  
 
 ![image](https://github.com/jambesh/tabforslack-app/assets/12127470/486ffed7-1f9b-4674-a227-fe5cb3d5fe83)
 
