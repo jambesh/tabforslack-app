@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+
+h1,
+p,
+
+
+h1 {
+  font-size: 2.5em;;
+  padding: 70px 0;
+  font-weight: 900;
+  margin:10px;
+  
+}
+
+.p1 {
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  margin: 15px;
+  font-weight: 400;
+  color: blue;
+  line-height: 0.1;
+}
+.banner {
+  background-color: #254184;
+  color: #fff;
+  margin-top: 2px;
+  padding-top: 1px;
+  font-size: 25px;
+  line-height: 0.5; /* Add a custom line height */
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  position:relative;
+  top:-15px;
+}
+
+.banner p {
+  margin-top: 5px;
+  font-size: 15px;
+  line-height: 0.1; /* Add a custom line height */
+  font-weight: 300;
+  letter-spacing: 4px;
+  padding-top: 5px;
+}
+
+
+.btn-bgstroke {
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 200;
+  margin-top: 30px; 
+  color:aqua;
+}
+ 
+.div-1 {
+  
+  margin-left: 0.5em;
+  text-align: left;
+  padding-left: 0.5em;
+  padding-top: 1em;
+  color: blue;
+  line-height: 0.2;
+  font-size: 13px;
+}
+
+.div-2 {
+  margin-left: 10px;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: blue;
+  line-height: 0;
+  font-size: 14px;
+}
+
+
+.div-3 {
+background-color: #b6e2f5;
+}
+
+.div-4 {
+  background-color: hsl(75, 63%, 81%);
+  }
+
+
+body {
+  font-family: Arial;
+  margin: 10;
+}
+
+
+

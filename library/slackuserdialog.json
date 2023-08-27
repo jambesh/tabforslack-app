@@ -1,0 +1,791 @@
+{
+"import-group":
+{    
+        "callback_id": "import-group",
+        "title": "AD Group Import",
+        "submit_label": "Request",
+        "notify_on_cancel": "True",
+        "state": "Limo",
+        "elements": [
+            {
+                "label": "Server Name",
+                "name": "server_name",
+                "type": "select",
+                "options": [
+                    {
+                    "label": "Tableaudev",
+                    "value": "Dev"
+                    },
+                    {
+                    "label": "Tableaustg",
+                    "value": "stg"
+                    },
+                    {
+                        "label": "Tableauprod",
+                        "value": "prd"
+                    }
+                    
+                ]
+                
+            },
+        
+            {
+                "label": "Site Name",
+                "name": "site_name",
+                "type": "select",
+                "option_groups": [
+                {
+                    "label": "Tableaudev",
+                    "options": [
+                    {
+                        "label": "SelfService",
+                        "value": "selfservice"
+                    },
+                    {
+                        "label": "Development",
+                        "value": "development"
+                    }
+                   
+                    ]
+                },
+              {
+                "label": "Tableaustg",
+                "options": [
+                  {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                  },
+                  {
+                    "label": "R&D",
+                    "value": "rnd"
+                  },
+                  
+                  {
+                    "label": "Stage",
+                    "value": "stage"
+                  }
+                  
+                ]
+              },
+              {
+                "label": "Tableauprod",
+                "options": [
+                  {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                  }    
+                ]
+              },
+              {
+                "label": "Tableausse",
+                "options": [
+                  {
+                    "label": "default",
+                    "value": "default"
+                  }
+                ]
+              }
+            ]
+        },
+        
+        
+        {
+            
+            "label": "AD Group Name",
+            "name": "group_name",
+            "type": "text",
+            "hint" : "Hint: AD Group Name"
+        },
+        {
+            "label": "Group Role",
+            "name": "role_name",
+            "type": "select",
+            "value": "EXPLORER",
+            "options": [
+                {
+                  "label": "Explorer",
+                  "value": "EXPLORER"
+                },
+                {
+                  "label": "Publisher",
+                  "value": "PUBLISHER"
+                }
+                 
+              ]
+            
+        }
+    ]
+}
+,
+   
+"create-project" : 
+{    
+    "callback_id": "create-project",
+    "title": "New Project Request",
+    "submit_label": "Request",
+    "notify_on_cancel": "True",
+    "state": "Limo",
+    "elements": [
+        
+        {
+            "label": "Server Name",
+            "name": "server_name",
+            "type": "select",
+            "options": [
+                {
+                  "label": "Tableaudev",
+                  "value": "Dev"
+                },
+                {
+                  "label": "Tableaustg",
+                  "value": "stg"
+                },
+                {
+                    "label": "Tableauprod",
+                    "value": "prd"
+                },
+                {
+                  "label": "Tableausse",
+                  "value": "sse"
+                }
+
+                 
+              ]
+            
+        },
+
+        {
+            "label": "Site Name",
+            "name": "site_name",
+            "type": "select",
+            "option_groups": [
+              {
+                "label": "Tableaudev",
+                "options": [
+                  {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                  },
+                  {
+                    "label": "Development",
+                    "value": "development"
+                  }
+                  
+                ]
+              },
+              {
+                "label": "Tableaustg",
+                "options": [
+                  {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                  },
+                  {
+                    "label": "Stage",
+                    "value": "stage"
+                  }
+                  
+                ]
+              },
+              {
+                "label": "Tableauprod",
+                "options": [
+                  {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                  }   
+                ]
+              },
+              {
+                "label": "Tableausse",
+                "options": [
+                  {
+                    "label": "default",
+                    "value": "default"
+                  }
+                       
+                ]
+              }
+            ]
+          },
+
+        {
+            "label": "Project Name",
+            "name": "project_name",
+            "type": "text",
+            "placeholder" : "SelfService - Customer Spend Analytics",
+            "hint" : "Hint: Please use 'SelfService - '  OR 'Certified - ' as prefix for parent project"
+        },
+
+        {
+            "label": "Project Mode",
+            "name": "project_mode",
+            "type": "select",
+            "value" : "LOCKED",
+            "options": [
+                {
+                  "label": "Locked",
+                  "value": "LOCKED"
+                },
+                {
+                  "label": "Managed By Owner",
+                  "value": "MANAGED BY OWNER"
+                }
+                 
+              ]
+            
+        }
+
+    ]
+}
+
+,
+
+"grant-role":
+{    
+    "callback_id": "grant-role",
+    "title": "Map Group to Project",
+    "submit_label": "Request",
+    "notify_on_cancel": "True",
+    "state": "Limo",
+    "elements": [
+        {
+            "label": "Server Name",
+            "name": "server_name",
+            "type": "select",
+            "options": [
+                {
+                "label": "Tableaudev",
+                "value": "Dev"
+                },
+                {
+                "label": "Tableaustg",
+                "value": "stg"
+                },
+                {
+                    "label": "Tableauprod",
+                    "value": "prd"
+                },
+                {
+                  "label": "Tableausse",
+                  "value": "sse"
+              }
+                
+            ]
+            
+        },
+    
+        {
+            "label": "Site Name",
+            "name": "site_name",
+            "type": "select",
+            "option_groups": [
+            {
+                "label": "Tableaudev",
+                "options": [
+                {
+                    "label": "SelfService",
+                    "value": "selfservice"
+                },
+                {
+                    "label": "Development",
+                    "value": "development"
+                }
+                ]
+            },
+          {
+            "label": "Tableaustg",
+            "options": [
+              {
+                "label": "SelfService",
+                "value": "selfservice"
+              },
+              {
+                "label": "Stage",
+                "value": "stage"
+              }
+              
+            ]
+          },
+          {
+            "label": "Tableauprod",
+            "options": [
+              {
+                "label": "SelfService",
+                "value": "selfservice"
+              }
+            ]
+          },
+          {
+            "label": "Tableausse",
+            "options": [
+              {
+                "label": "default",
+                "value": "default"
+              }
+                   
+            ]
+          }
+        ]
+    },
+    
+    {
+        
+        "label": "Project Name",
+        "name": "project_name",
+        "type": "text",
+        "hint" : "Hint: Project Name"
+    },
+    
+    {
+        
+        "label": "AD Group Name",
+        "name": "group_name",
+        "type": "text",
+        "hint" : "Hint: AD Group Name"
+    },
+
+
+    {
+        "label": "Group Role",
+        "name": "role_name",
+        "type": "select",
+        "hint" : "Hint: User<->Explorer , Developer <-> Publisher , Lead <-> Leader",
+        "value": "EXPLORER",
+        "options": [
+            {
+              "label": "Explorer",
+              "value": "EXPLORER"
+            },
+            {
+              "label": "Publisher",
+              "value": "PUBLISHER"
+            },
+            {
+                "label": "ProjectLead",
+                "value": "ProjectLead"
+              }
+             
+          ]
+        
+    }
+]
+}
+,
+
+"home-tab-view":
+{
+ 
+  "type": "home",
+  "blocks": [
+  {
+      "type": "image",
+      "title": {
+          "type": "plain_text",
+          "text": " "
+          
+      },
+      "block_id": "image4",
+      "image_url": "https://ceblog.s3.amazonaws.com/wp-content/uploads/2023/03/31001513/slack1-min.png",
+      "alt_text": "An incredibly cute kitten."
+      },
+
+      {
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "*Welcome to tabforslack product home !* "
+          }
+      },
+
+      {
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "tabforslack is designed to help you perform  Tableau's content management & governance tasks like creating project , importing group , map group to project across any sever and site with out leaving slack to improve productivity."
+          }
+      },
+      {
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "** \nGo To Messages Tab To start using Self Service or just type /tabforslack on any channel using one of the command options\n Hope you have good experience using the tool !!\n** \n For Video Demo Please check : https://www.youtube.com/watch?v=RNjrGskMw-4\n"
+          }
+      },
+
+      {"type": "divider"},
+      {
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "\n "
+          }
+      },
+
+
+
+{
+"type": "header",
+"text": {
+"type": "plain_text",
+"text": " ✅  Self Service using GUI by using /tabforslack "
+
+}
+},
+{
+"type": "section",
+"text": {
+"text": "You can easily Create project, import group, map group to project by using /tabforslack command in any channel or directly within app IM",
+"type": "mrkdwn"
+},
+"fields": [
+{
+"type": "mrkdwn",
+"text": "*Command Example*"
+},
+{
+"type": "mrkdwn",
+"text": "*Type*"
+},
+{
+"type": "plain_text",
+"text": "/tabforslack create project"
+},
+{
+"type": "plain_text",
+"text": "Invoke New Project GUI"
+},
+{
+"type": "plain_text",
+"text": "/tabforslack import group"
+},
+{
+"type": "plain_text",
+"text": "Invoke Import AD group GUI"
+},
+{
+"type": "plain_text",
+"text": "/tabforslack grant role"
+},
+{
+"type": "plain_text",
+"text": "Invoke Map AD group to Project GUI"
+}
+]
+},
+{
+"type": "divider"
+},
+{
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "\n "
+          }
+      },
+{
+"type": "header",
+"text": {
+"type": "plain_text",
+"text": "🗂️  New Project using SQL like Natural Language"
+
+}
+},
+{
+"type": "section",
+"text": {
+"text": "You can also create Project using command line which is very much similar to normal natural SQL statement and is much faster to perform",
+"type": "mrkdwn"
+},
+"fields": [
+{
+"type": "mrkdwn",
+"text": "*Command Example*"
+},
+{
+"type": "mrkdwn",
+"text": "*Type*"
+},
+{
+"type": "plain_text",
+"text": "create project name=<Project Name> "
+},
+{
+"type": "plain_text",
+"text": "This command will create the project in default server and site"
+},
+{
+"type": "plain_text",
+"text": "create project name=<Project Name> server=[dev|stg|prd|sse]"
+},
+{
+"type": "plain_text",
+"text": "This command will create the project in 'dev' server and use default site specified in config"
+},
+{
+"type": "plain_text",
+"text": "create project name=<Project Name> server=dev site=development"
+},
+{
+"type": "plain_text",
+"text": "This command will create the project in 'dev' server and on development site"
+}
+]
+},
+{
+"type": "divider"
+},
+{
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "\n "
+          }
+      },
+{
+"type": "header",
+"text": {
+"type": "plain_text",
+"text": "🏘️▼  AD Group Import using Command line"
+
+}
+},
+{
+"type": "section",
+"text": {
+"text": "Import AD group and set default role using command line is as easy as writing very plain simple SQL statement",
+"type": "mrkdwn"
+},
+"fields": [
+{
+"type": "mrkdwn",
+"text": "*Command Example*"
+},
+{
+"type": "mrkdwn",
+"text": "*Type*"
+},
+{
+"type": "plain_text",
+"text": "import group name=<AD-GROUP-NAME>"
+},
+{
+"type": "plain_text",
+"text": "Import the group with default role of explorer and on default server & site"
+},
+{
+"type": "plain_text",
+"text": "import group name=<AD-GROUP-NAME>"
+},
+{
+"type": "plain_text",
+"text": "Import the group into  'dev' server and  default site specified in config with default role Explorer"
+},
+{
+"type": "plain_text",
+"text": "import group name=<AD-GROUP-NAME> server=dev site=development"
+},
+{
+"type": "plain_text",
+"text": "Import the group into specified server and site with default role explorer"
+},
+{
+"type": "plain_text",
+"text": "import group name=<AD-GROUP-NAME> server=dev site=development role=publisher"
+},
+{
+"type": "plain_text",
+"text": "Import the group into specified server and site with site role publisher"
+}
+]
+},
+{
+"type": "divider"
+},
+{
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "\n "
+          }
+      },
+{
+"type": "header",
+"text": {
+"type": "plain_text",
+"text": "🏘->🗂️  Map Group to Project using Command line"
+}
+},
+{
+"type": "section",
+"text": {
+"text": "Mapping/Grant group role to Project is using command line is as easy as writing very plain simple SQL statement",
+"type": "mrkdwn"
+},
+"fields": [
+{
+"type": "mrkdwn",
+"text": "*Command Example*"
+},
+{
+"type": "mrkdwn",
+"text": "*Type*"
+},
+{
+"type": "plain_text",
+"text": "grant role name=explorer group=<AD-GROUP-NAME> project=selfserve - Automation"
+},
+{
+"type": "plain_text",
+"text": "Map the group to project on default server & site with site role explorer"
+},
+{
+"type": "plain_text",
+"text": "grant role name=[explorer|publisher|leader] group=<AD-GROUP-NAME> project=selfserve - Automation server=[dev|stg|prd]"
+},
+{
+"type": "plain_text",
+"text": " Map the group to Project on one of the specified servers with explorer role"
+},
+{
+"type": "plain_text",
+"text": "grant role name=[explorer|publisher|leader] group=<AD-GROUP-NAME> project=<Project Name> server=[dev|stg|prd] site=development"
+},
+{
+"type": "plain_text",
+"text": "Map the group to Project on one of the specified servers and site  with minimum site role explorer"
+},
+{
+"type": "plain_text",
+"text": "import group name=<AD-Group-Name> server=dev site=development role=publisher"
+},
+{
+"type": "plain_text",
+"text": "Import the group into specified server and site with site role publisher"
+}
+]
+},
+{
+"type": "divider"
+},
+{
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "\n "
+          }
+      },
+{
+"type": "context",
+"elements": [
+{
+"type": "mrkdwn",
+"text": "*Fore More info & Help *  Please check  Confluence Page*>"
+}
+]
+}
+]
+}
+,
+"schedule-flow":
+{
+  "callback_id": "schedule-flow",
+    "title": "Schedule Flow",
+    "submit_label": "Schedule",
+    "notify_on_cancel": "True",
+    "state": "Limo",
+    "elements": [
+        
+        {
+            "label": "Server Name",
+            "name": "server_name",
+            "type": "select",
+            "options": [
+                
+                {
+                  "label": "Tableaustg",
+                  "value": "stg"
+                },
+                {
+                    "label": "Tableauprod",
+                    "value": "prd"
+                }
+    
+              ]
+            
+        } ,
+        
+        {
+          "label": "Site Name",
+          "name": "site_name",
+          "type": "select",
+          "value" : "SelfService",
+          "options": [
+              {
+                "label": "SelfService",
+                "value": "SelfService"
+              }
+              
+               
+            ]
+          
+      },
+
+      {
+        "label": "Flow Name",
+        "name": "flow_name",
+        "type": "text",
+        "placeholder" : "Flow Name",
+        "hint" : "Note: Please use the exact Flow Name"
+    },
+    {
+      "label": "Select Schedule for Flow",
+      "name": "schedule_name",
+      "type": "select",
+      "value" : "schedule",
+      "options": [
+          {
+          "label": "Run Now",
+          "value": "Run Now"
+          },
+          {
+            "label": "Every 6 Hour Starting 12 AM",
+            "value": "Every 6 Hour"
+          },
+          {
+            "label": "Every 12 Hour Starting 12 AM",
+            "value": "Run Every 12 Hour Starting 12 AM"
+          },
+
+          {
+            "label": "Daily Once at 11 AM",
+            "value": "Daily Once at 11 AM"
+          },
+          {
+            "label": "Daily Once at 2 PM",
+            "value": "Daily Once at 2 PM"
+          },
+          {
+            "label": "Daily Once at 6 PM",
+            "value": "Daily Once at 6 PM"
+          },
+          {
+            "label": "Weekly Once Saturday 6 PM",
+            "value": "Weekly Once Saturday 6 PM"
+          },
+          {
+            "label": "Weekly Once Sunday 6 PM",
+            "value": "Weekly Once Sunday 6 PM"
+          }         
+
+           
+        ]
+      
+    }
+     
+
+  ]
+
+}
+
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workbook Lineage</title>
+    <link rel="stylesheet" type ="text/css" href="../static/header.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   </head>
+  <body>  
+     <div class="banner" >
+          <h1>WORKBOOK LINEAGE</h1>
+          <p>Generated using tabforslack app </p>
+          <p>@VMWare</p>
+          <br>
+      </div>
+     
+     
+      <h4>WORKBOOK META DATA</h4>
+      <hr>
+      <div class="container">
+         <div class="row">  
+         
+          <h6 class="div-2">Workbook Name:    {{ workbook_lineage.workbook_name }}   </h6>       
+          <h6 class="div-2">Workbook Owner:  {{ workbook_lineage.workbook_owner }}   </h6>         
+          <h6 class="div-2">Workbook Project:   {{ workbook_lineage.workbook_project }}   </h6>        
+          <h6 class="div-2">Last Modified:    {{ workbook_lineage.workbook_updated_at }}   </h6>
+          </div>
+      </div>
+      <hr>
+        <h4>LINEAGE DETAILS</h4>
+
+        <div class="container"> 
+        <div class="row">
+        
+
+          {% for key_word,value in workbook_lineage.items() %}      
+          
+            {% if key_word  in ['workbook_name','workbook_owner','workbook_project','workbook_updated_at'] %}
+               {# skipp do nothing  #}
+                {% if key_word == "sheets" %}
+                     
+                {% endif %}
+            {% else %}
+               
+                <h3>{{key_word}}</h3>
+                
+                <ul>
+                  {% for val_word in value %}
+                  <li class="div-1">{{val_word}}</li>                
+                                  
+                  {% endfor %}
+              </ul>
+            {% endif %}
+            
+
+          {% endfor %}
+          
+        </ul>
+      </div>
+    </div>
+ 
+  </body>
+</html>

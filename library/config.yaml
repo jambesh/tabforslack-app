@@ -1,0 +1,116 @@
+# Define your Tableau Environment Details :
+# This information will be use to validate user  input provide through Slack App
+
+ 
+##@ Site Block:
+# You can add or remove the environment site block if some thing is not applicable to you. 
+# example : if you don't have RND Site , you can remove the block for RND .
+
+##@ Site Names/Order:
+# If your server have multiple sites, the first site on the order will be default site , you can remove the site and add site 
+# as applicable to your environment.
+# below are example sites on different tableau server .
+
+TABLEAU_ENV:
+    PRD:
+        SERVER: "https://yourtableau.prodserver.com"
+        SITES:
+          - "SelfService"
+          - "Default"
+          - "Research"
+          - "Product"
+          - "Cloud"
+          - "Sales"
+        TOKEN_NAME: "prod-tab-token"
+        TOKEN_SECRET: "Replace with your tableau production secret for the token above"
+        SVC_USER: "Replace this with your Tableau user "
+        SVC_PASS: "Replaec this with your tableau user password"
+
+    STG:
+        SERVER: "https://yourtableau.testserver.com"
+        SITES:
+          - "SelfService"
+        TOKEN_NAME:  "stage-tab-token"
+        TOKEN_SECRET: "replace your stage/test/uat server token secret for the above"
+        SVC_USER: "Replace this with your Tableau user"
+        SVC_PASS: "Replaec this with your tableau user password"
+
+    DEV:
+        SERVER: "https://yourtableau.devserver.com"
+        SITES:
+          - "SelfService"
+          - "Default"
+        TOKEN_NAME: "dev-tab-token"
+        TOKEN_SECRET: "Replace with the dev Token Secret"
+        SVC_USER: "Replace this with your dev Tableau user"
+        SVC_PASS: "Replaec this with your tableau user password"
+        
+    RND:
+        SERVER: "https://yourtableau.rndserver.com"
+        SITES:
+          - "Default"
+        TOKEN_NAME: "tableaurnd"
+        TOKEN_SECRET: "tableau token secret"
+        SVC_USER: "tableau r&d user "
+        SVC_PASS: "r &d password"
+
+# If no Server or Site Specified ,  This section will be use for default operation.
+# You can change this section to make your own default server and site
+## Specify the server name  which will be use as default if no server name specified by user.
+    DEFAULT:     
+        SERVER: "https://tableau.defaultserver.com"
+        SITES: 
+          - "SelfService"
+        TOKEN_NAME: "tabdev"
+        TOKEN_SECRET: "1UFSXlMiReaZ78M1PJedbiTe- tableau token secret"
+        SVC_USER: "tableauuser"
+        SVC_PASS: "tableau passowrd"
+
+
+## Replace your 'yourcompany domain with actual company domain below'
+TABLEAU_DOMAIN:
+  NAME: "yourcompany.com"
+
+# Configure Slack Related Information -  
+# Provide Slack App name, app token, bot secret, slack slash command that you configured in slack.
+# below are example of slack sandbox and slack production, 
+
+SLACK_ENV_SBOX:
+  SLACK_APP_NAME: "tabslash"
+  SLACK_APP_TOKEN: "your sandbox app token"
+  SLACK_BOT_TOKEN: "your bot token"
+  SLACK_COMMAND_NAME: "/tabforslack"
+
+SLACK_ENV:
+  SLACK_APP_NAME: "tabforslack"
+  SLACK_APP_TOKEN: "Your App token"
+  SLACK_BOT_TOKEN: "Your Bot Token"
+  SLACK_COMMAND_NAME: "/tabforslack"
+
+## Define Valid Commands Users can use from Slack slash prompt,  You add new command here and change the main Library
+#  to add functionality specific to the new command.
+
+VALID_SLACK_USER_COMMAND:
+  NAME:
+    - "create-project"
+    - "import-group"
+    - "grant-role"
+    - "query-workbook"
+    - "query-project"
+    - "query-group"
+    - "migrate-workbook"
+    - "update-connection"
+    - "analyze-workbook"
+    - "analyze-datasource"
+    - "schedule-flow"
+
+## To ease the Role assignment , define what each role can do.
+
+TABLEAU_CAPABILITY: 
+  WB_CONSUMER: "{TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow,TSC.Permission.Capability.WebAuthoring: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportImage: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Filter: TSC.Permission.Mode.Allow,TSC.Permission.Capability.AddComment: TSC.Permission.Mode.Allow,TSC.Permission.Capability.RunExplainData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewUnderlyingData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ShareView: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewComments: TSC.Permission.Mode.Allow}"
+  WB_PUBLISHER: "{TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Write: TSC.Permission.Mode.Allow,TSC.Permission.Capability.WebAuthoring: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportImage: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Filter: TSC.Permission.Mode.Allow,TSC.Permission.Capability.AddComment: TSC.Permission.Mode.Allow,TSC.Permission.Capability.RunExplainData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewUnderlyingData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ShareView: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewComments: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportXml: TSC.Permission.Mode.Allow}"
+  DS_CONSUMER: "{TSC.Permission.Capability.Connect: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow}"
+  DS_PUBLISHER: "{TSC.Permission.Capability.Connect: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Write: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportXml: TSC.Permission.Mode.Allow}"      
+  PROJECT_READ: "{TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow}"
+  PROJECT_LEAD: "{TSC.Permission.Capability.ProjectLeader: TSC.Permission.Mode.Allow}"
+  PROJECT_PUBLISH: "{TSC.Permission.Capability.Write: TSC.Permission.Mode.Allow}"
