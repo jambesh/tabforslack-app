@@ -19,9 +19,6 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 #Events Subscriptions Basic Informations >App Feature and Functionality -->Event Subscription OR Directly click on the Event Subscription from left . 
 ##ENABLE EVENTS TURN ON By default it is off. Enable following Events /Subscribe to Bots Events :  
 
-![image](https://github.com/jambesh/tabforslack-app/assets/12127470/486ffed7-1f9b-4674-a227-fe5cb3d5fe83)
-
-
 |Event Name | Description | Required Scopre|
 | --------- | ----------- | -------------- |
 | app_home_opened | User Clicked into Your App Home | None |
