@@ -30,17 +30,16 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 
 *  Once you are done with the configuration above, the next obvious steps is to make it available to use within slack and for that this app need to install on your workspace . Click on install All on your left Navigatiob menu or click on Basic Information and then you have the step 2 install option there, click on Install App to install it to workspace. if your slack has Admin review process , it may go to your admin for review and once they approve it you should be able to search the app and add it to your slack.  
 *  Copy following information to be configured into Python . Slack App Name : this is App name that you provided earlier ( eg. tabforslack) Token Name : on your left side menu click on Basic Information - >Scroll down on The right to the App level Token and click on the socket app name to reveal the Token Name. BOT User Token : Click on the OAuth Section of left side menu and then copy the BOT USER TOKEN .  
-# Python Config :
-Download/Clone the git repo file -https://github.com/jambesh/tabforslack this repo has the venv file which has all the python package require to run the app but if you like to build , you can build your own Python Virtual Env Following are the require module need to be install on your virtual env ''' slack_bolt , tableauserverclient pdfkit '''
-Step-1: Make changes to the Config file and update the Tableau and Slack Environment Information on the downloaded git repo
-Unzip the downloaded repo file, Under the folder slackapp-main folder you will have all the files. Open this folder with VS Studio Code. Under Library ->Open the Config.yaml file
-1.	
-Modify your Tableau Server Name, Site Name . for each of the tableau environment you have you can tag those environment with name like dev/stg/prd for quick access from the slack instead of the url. The first site on the list will be fefault site to perform operations if the user don't spefy site name. You can also specify the default server , in case you have multipls server to perform operation if user don;t specify any server or site . Specify the User Name/Password that will be use to perform this operation , you can setup a generic user id/password and use that. 3) Domain Name: modify the domain name to match your company name
-4.	Slack setting: specify the copied Slack details like App name, BOT Name, App Token etc .
-5.	Slack App Home Page Configuration : if you want to make change to the Slack App Home page with additional information like help/instruction/image/video link - use slackuser dialog configuration json file to modify it. file to modify for the Slack App Home : # slackuserdialog.json #
-Running the App :
+## Python Config :
+Download/Clone the git repo file -https://github.com/jambesh/tabforslack this repo has the venv file which has all the python package require to run the app but if you like to build , you can build your own Python Virtual Env Following are the require module need to be install on your virtual env ''' slack_bolt , tableauserverclient pdfkit.  
+*  Step-1: Make changes to the Config file and update the Tableau and Slack Environment Information on the downloaded git repo.  
+   Unzip the downloaded repo file, Under the folder slackapp-main folder you will have all the files. Open this folder with VS Studio Code. Under Library ->Open the Config.yaml file.  
+*  Modify your Tableau Server Name, Site Name . for each of the tableau environment you have you can tag those environment with name like dev/stg/prd for quick access from the slack instead of the url. The first site on the list will be fefault site to perform operations if the user don't spefy site name. You can also specify the default server , in case you have multipls server to perform operation if user don;t specify any server or site . Specify the User Name/Password that will be use to perform this operation , you can setup a generic user id/password and use that. 3) Domain Name: modify the domain name to match your company name.  
+*  Slack setting: specify the copied Slack details like App name, BOT Name, App Token etc .  
+*	Slack App Home Page Configuration : if you want to make change to the Slack App Home page with additional information like help/instruction/image/video link - use slackuser dialog configuration json file to modify it. file to modify for the Slack App Home : # slackuserdialog.json #  
+## Running the App :
 For local testing/trouble shooting, the best option is to do below cd to the downloaded git repo folder after unzip . use the virtual environment by using # source venv/bit/activate # this will run in interactive mode if all goes well
-# Testing the App :
+## Testing the App :
 In Slack , Search for tabforslack and add the app and this should show the App Home/Message/About . The App home shows the Help/Instruction /demo etc the message section is the majic section , where you can invoke the majic command /tabforslack
 type /tabforslack create project and hit enter. this should bring the project creation dialog box .
 
@@ -50,14 +49,14 @@ type /tabforslack create project and hit enter. this should bring the project cr
 
  
 Fill the info and submit !!! it should shows the message with tableau project create status and the new project url ...!!
-# Production Deployment considerations:
+## Production Deployment considerations:
 Run this app on a dedicate Virtual Machine or Container in nohup background mode.
 Toubel Shoot : it has the log module, if you run into issue, enable logging and check what is missing .
 
-# Warning/Notes:
+## Warning/Notes:
 While I used this App in production grade, you can do further customize and add new features as per your need.
 
-# Future Additions:
+## Future Additions:
 *  Ability to Audit the performance of the workbook from slack and suggest improvement .   
 *  Ability to migrate content from one server to other without leaving slack.  
 *  Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On).  
