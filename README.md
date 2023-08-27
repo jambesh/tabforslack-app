@@ -21,9 +21,9 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 
 ![image](https://github.com/jambesh/tabforslack-app/assets/12127470/486ffed7-1f9b-4674-a227-fe5cb3d5fe83)
 
-|------------------------------------------|
+
 |Event Name | Description | Required Scopre|
-|------------------------------------------|
+| --------- | ----------- | -------------- |
 | app_home_opened | User Clicked into Your App Home | None |
 | app_mention | Subscribe to only the message events that mention your app or bot | app_mentions:read |
 | message.im | A message was posted in a direct message channel | im.history |
