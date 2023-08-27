@@ -26,8 +26,21 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 | message.im | A message was posted in a direct message channel | im.history |
 
 
- > Bots Basic Information - > App Feature and Functionality ->Bots Give your app a name, show online yes , show tab and home yes /turn on.
- > Permission/Bot Scope : this is important section as this will determine your app scope . some of the scope needed for advance automations are below.
+ ####  Bots Basic Information - > App Feature and Functionality ->Bots Give your app a name, show online yes , show tab and home yes /turn on.
+ ##  Permission/Bot Scope : 
+ this is important section as this will determine your app scope . some of the scope needed for advance automations are below.
+
+| Oauth Scope | Description |
+| ----------- | ----------- |
+| app_mentions:read | View message that directly mention @tabforslack in conversations that the app is in |
+| chat:write | Send message as tabforslack |
+| commands | Add shortcuts and/or slash commands that people can use | 
+| files:write | Upload, edit and delte files as tabforslack |
+| im:history | View message and other content in direct messages that tabforslack has been added to |
+| im:read |  View basic information about direct message that tabforslack has been added to |
+| im:write | Start direct message with people |
+| users:read | View People in a workspace |
+| users:read.email | View email address of people in a workspace |
 
 
 ![image](https://github.com/jambesh/tabforslack-app/assets/12127470/a027e069-fce2-40e7-9dff-10315c3f8280)
