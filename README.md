@@ -22,8 +22,9 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 ![image](https://github.com/jambesh/tabforslack-app/assets/12127470/486ffed7-1f9b-4674-a227-fe5cb3d5fe83)
 
 
-#Bots Basic Information - > App Feature and Functionality ->Bots Give your app a name, show online yes , show tab and home yes /turn on.
-#Permission/Bot Scope : this is important section as this will determine your app scope . some of the scope needed for advance automations are below  
+ > Bots Basic Information - > App Feature and Functionality ->Bots Give your app a name, show online yes , show tab and home yes /turn on.
+ > Permission/Bot Scope : this is important section as this will determine your app scope . some of the scope needed for advance automations are below.
+
 
 ![image](https://github.com/jambesh/tabforslack-app/assets/12127470/a027e069-fce2-40e7-9dff-10315c3f8280)
 
