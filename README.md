@@ -42,9 +42,6 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 | users:read | View People in a workspace |
 | users:read.email | View email address of people in a workspace |
 
-
-![image](https://github.com/jambesh/tabforslack-app/assets/12127470/a027e069-fce2-40e7-9dff-10315c3f8280)
-
 *  Once you are done with the configuration above, the next obvious steps is to make it available to use within slack and for that this app need to install on your workspace . Click on install All on your left Navigatiob menu or click on Basic Information and then you have the step 2 install option there, click on Install App to install it to workspace. if your slack has Admin review process , it may go to your admin for review and once they approve it you should be able to search the app and add it to your slack.  
 *  Copy following information to be configured into Python . Slack App Name : this is App name that you provided earlier ( eg. tabforslack) Token Name : on your left side menu click on Basic Information - >Scroll down on The right to the App level Token and click on the socket app name to reveal the Token Name. BOT User Token : Click on the OAuth Section of left side menu and then copy the BOT USER TOKEN .  
 ## Python Config :
