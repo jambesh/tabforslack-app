@@ -27,7 +27,7 @@ Quick Demo : https://www.youtube.com/watch?v=RNjrGskMw-4
 | app_home_opened | User Clicked into Your App Home | None |
 | app_mention | Subscribe to only the message events that mention your app or bot | app_mentions:read |
 | message.im | A message was posted in a direct message channel | im.history |
-|------------------------------------------|
+
 
  > Bots Basic Information - > App Feature and Functionality ->Bots Give your app a name, show online yes , show tab and home yes /turn on.
  > Permission/Bot Scope : this is important section as this will determine your app scope . some of the scope needed for advance automations are below.
