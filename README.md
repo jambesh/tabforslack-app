@@ -58,4 +58,6 @@ Run this app on a dedicate Virtual Machine or Container in nohup background mode
 While I used this App in production grade, you can do further customize and add new features as per your need.
 
 # Future Additions:
-Ability to Audit the performance of the workbook from slack and suggest improvement . Ability to migrate content from one server to other without leaving slack. Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On)
+Ability to Audit the performance of the workbook from slack and suggest improvement . 
+Ability to migrate content from one server to other without leaving slack. 
+Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On).
