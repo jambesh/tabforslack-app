@@ -59,5 +59,3 @@ While I used this App in production grade, you can do further customize and add 
 
 # Future Additions:
 Ability to Audit the performance of the workbook from slack and suggest improvement . Ability to migrate content from one server to other without leaving slack. Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On)
-
-![image](https://github.com/jambesh/tabforslack-app/assets/12127470/5d79d14d-4711-49df-a834-dd17f3452ec6)
