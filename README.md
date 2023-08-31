@@ -72,10 +72,10 @@ type /tabforslack create project and hit enter. this should bring the project cr
 Fill the info and submit !!! it should shows the message with tableau project create status and the new project url ...!!
 ### Production Deployment considerations:
 Run this app on a dedicate Virtual Machine or Container in nohup background mode.
-Toubel Shoot : it has the log module, if you run into issue, enable logging and check what is missing .
+it has the log module, if you run into issue, enable logging and check what is missing .
 
 ### Warning/Notes:
-While I used this App in production grade, you can do further customize and add new features as per your need.
+While I used this App in production grade, you can do further cleanup of this code and  customize and add new features as per your need.
 
 ### Future Additions:
 *  Ability to Audit the performance of the workbook from slack and suggest improvement .   
