@@ -1,8 +1,8 @@
 {
-"import-group":
-{    
+    "import-group":
+    {    
         "callback_id": "import-group",
-        "title": "AD Group Import",
+        "title": "Group Import",
         "submit_label": "Request",
         "notify_on_cancel": "True",
         "state": "Limo",
@@ -44,8 +44,12 @@
                     {
                         "label": "Development",
                         "value": "development"
+                    },
+                    {
+                        "label": "smeakpi",
+                        "value": "sneakpi"
                     }
-                   
+                    
                     ]
                 },
               {
@@ -56,14 +60,14 @@
                     "value": "selfservice"
                   },
                   {
-                    "label": "R&D",
-                    "value": "rnd"
-                  },
-                  
-                  {
-                    "label": "Stage",
+                    "label": "stage",
                     "value": "stage"
+                  },
+                  {
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                   }
+                  
                   
                 ]
               },
@@ -71,30 +75,49 @@
                 "label": "Tableauprod",
                 "options": [
                   {
+                    "label": "production",
+                    "value": "production"
+                  },
+                  {
                     "label": "SelfService",
                     "value": "selfservice"
-                  }    
-                ]
-              },
-              {
-                "label": "Tableausse",
-                "options": [
+                  },
                   {
-                    "label": "default",
-                    "value": "default"
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                   }
+                  
+                        
                 ]
               }
             ]
         },
-        
+
+        {
+          "label": "Group Type",
+          "name": "group_type",
+          "type": "select",
+          "value": "local",
+          "options": [
+              {
+                "label": "LOCAL",
+                "value": "local"
+              },
+              {
+                "label": "AD",
+                "value": "ad"
+              }
+               
+            ]
+          
+      },
         
         {
             
-            "label": "AD Group Name",
+            "label": "Group Name",
             "name": "group_name",
             "type": "text",
-            "hint" : "Hint: AD Group Name"
+            "hint" : "Hint: Group Name"
         },
         {
             "label": "Group Role",
@@ -148,7 +171,6 @@
                   "label": "Tableausse",
                   "value": "sse"
                 }
-
                  
               ]
             
@@ -167,10 +189,9 @@
                     "value": "selfservice"
                   },
                   {
-                    "label": "Development",
-                    "value": "development"
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                   }
-                  
                 ]
               },
               {
@@ -181,9 +202,10 @@
                     "value": "selfservice"
                   },
                   {
-                    "label": "Stage",
-                    "value": "stage"
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                   }
+                  
                   
                 ]
               },
@@ -193,19 +215,15 @@
                   {
                     "label": "SelfService",
                     "value": "selfservice"
-                  }   
-                ]
-              },
-              {
-                "label": "Tableausse",
-                "options": [
+                  },
                   {
-                    "label": "default",
-                    "value": "default"
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                   }
                        
                 ]
               }
+              
             ]
           },
 
@@ -290,6 +308,10 @@
                 {
                     "label": "Development",
                     "value": "development"
+                },
+                {
+                    "label": "sneakpi",
+                    "value": "sneakpi"
                 }
                 ]
             },
@@ -303,6 +325,10 @@
               {
                 "label": "Stage",
                 "value": "stage"
+              },
+              {
+                "label": "sneakpi",
+                "value": "sneakpi"
               }
               
             ]
@@ -313,7 +339,15 @@
               {
                 "label": "SelfService",
                 "value": "selfservice"
-              }
+              },
+              {
+                "label": "production",
+                "value": "production"
+              },
+              {
+                "label": "sneakpi",
+                "value": "sneakpi"
+              }      
             ]
           },
           {
@@ -386,7 +420,7 @@
           
       },
       "block_id": "image4",
-      "image_url": "https://ceblog.s3.amazonaws.com/wp-content/uploads/2023/03/31001513/slack1-min.png",
+      "image_url": "https://www.tableau.com/sites/default/files/2021-08/TableauSlackDemo.jpg",
       "alt_text": "An incredibly cute kitten."
       },
 
