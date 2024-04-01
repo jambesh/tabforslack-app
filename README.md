@@ -81,3 +81,53 @@ While I used this App in production grade, you can do further cleanup of this co
 *  Ability to Audit the performance of the workbook from slack and suggest improvement .   
 *  Ability to migrate content from one server to other without leaving slack.  
 *  Ability to schedule a tableau Prep Flow using a third party scheduler like cron outside of Tableau (Without Data management Add On).  
+
+
+
+## **Visually Create Group , Project and Grant Role**
+```
+/tabforslack create project
+/tabforslack import group
+/tabforslack grant role
+```
+## **Create using SQL Like Commands : **
+**Create Project:**
+
+```
+create project name=tug_demo_project
+```
+**Create Group:**
+
+1) explicit role  and default group type
+
+```
+import group name=tug_demo_consumer role=consumer
+import group name=tug_demo_publisher role=publisher
+```
+2)   Default Role : Consumer, Default Group Type : Local Domain
+
+```
+import group name=tug_demo_consumer 
+```
+
+
+**Grant Role:**
+
+```
+grant role name=consumer group=tug_demo_consumer project=tug_demo_project
+grant role name=publisher group=tug_demo_publisher project=development
+```
+
+
+**Analyze Workbook:**
+
+```
+analyze workbook name=Salesforce Sales Cloud Sales Pipeline
+```
+
+
+**Query Workbook:**
+
+```
+ query workbook name=Account Tracking
+```
