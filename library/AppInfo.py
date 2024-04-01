@@ -12,6 +12,7 @@ from jinja2 import Environment, FileSystemLoader
 from library.tabLogger import tabLogger
 import pdfkit
 import os
+import csv 
 
 
 wb_consumer_capabilities = {TSC.Permission.Capability.Read: TSC.Permission.Mode.Allow,TSC.Permission.Capability.WebAuthoring: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ExportImage: TSC.Permission.Mode.Allow,TSC.Permission.Capability.Filter: TSC.Permission.Mode.Allow,TSC.Permission.Capability.AddComment: TSC.Permission.Mode.Allow,TSC.Permission.Capability.RunExplainData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewUnderlyingData: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ShareView: TSC.Permission.Mode.Allow,TSC.Permission.Capability.ViewComments: TSC.Permission.Mode.Allow}
@@ -27,10 +28,13 @@ project_publish_capability = {TSC.Permission.Capability.Write: TSC.Permission.Mo
 def get_env():  
     current_file_path = os.path.abspath(__file__)
     parent_dir_path = os.path.dirname(os.path.dirname(current_file_path))
+    
     configfile = parent_dir_path+"/library/"+"config.yaml"
+    #print(f"confi file = {configfile}")
      
     with open(configfile) as envinfo:
          data = yaml.load(envinfo, Loader=yaml.FullLoader)
+         
     return data
 #Load the config File
 configdata = get_env()
@@ -47,6 +51,60 @@ project_read_capability = configdata["TABLEAU_CAPABILITY"]["PROJECT_READ"]
 project_lead_capability = configdata["TABLEAU_CAPABILITY"]["PROJECT_READ"]
 project_publish_capability = configdata["TABLEAU_CAPABILITY"]["PROJECT_PUBLISH"]
 '''
+
+
+def validate_query(checkserver,checksite):
+        print("entered ...user query dict function ")
+        validServersAndSites = {}
+        tableau_app_info = {}
+       
+        #keys ,values = configdata['TABLEAU_ENV'].items()
+        #print(f"keys = {keys}  and values = {values}")
+
+        checkserver = checkserver.upper()
+        for env, config in configdata['TABLEAU_ENV'].items():
+           
+           #print(f"check server = {checkserver.upper()} and check site = {checksite} \n")
+
+           if (checkserver.upper() in env ) and checksite is None:
+              checksite = (configdata['TABLEAU_ENV'][checkserver]['SITES'])[0]
+              print(f"1.......{checksite}")
+              return True,env,checksite
+           if (checkserver in env ) and  checksite.upper() in config['SITES']: 
+                     return True, env ,checksite
+                    
+        return False, None ,None
+        
+        ''' 
+        if userver  in [k.upper() for k in validServersAndSites.keys()]:
+            print(f"2: Provided Server {userver} is Valid Server..")
+            print(f"3. default site for this server...{configdata['TABLEAU_ENV'][server]['SITES'][0]}")
+            if  usite.upper() == "DEFAULT":
+                usite = {configdata['TABLEAU_ENV'][server]['SITES'][0]}
+            
+            else:
+                usite
+
+            #msg= f"3:No Site Provided,Setting site to default  :  {usite} "
+            
+            tableau_app_info["TOKEN_NAME"] = configdata['TABLEAU_ENV'][userver]["TOKEN_NAME"]
+            tableau_app_info["TOKEN_SECRET"] = configdata['TABLEAU_ENV'][userver]["TOKEN_SECRET"]
+            tableau_app_info["TABLEAU_SERVER"]= configdata['TABLEAU_ENV'][userver]["SERVER"]
+            tableau_app_info["TABLEAU_SITE"]= usite
+            tableau_app_info['SVC_USER'] = configdata['TABLEAU_ENV'][userver]["SVC_USER"]
+            tableau_app_info["SVC_PASS"] = configdata['TABLEAU_ENV'][userver]["SVC_PASS"]
+            #print(f"5.is_valid_server_and_sites: conn info dict before return..{tableau_app_info}")
+             
+            return True,tableau_app_info          
+
+        else:
+            #emsg = f"In valid_server_and_sites:Error:Invalid server: {userver}"
+            #tablogger.error(emsg)
+            return False,tableau_app_info
+        '''
+
+
+
 
 
 
@@ -86,12 +144,12 @@ class TableauApp:
         except:
             print("Invalid Server or Site Specified ")
 
-    def validate_server_site(self,userver,usite="SelfService"):
+    def validate_server_site(self,userver,usite):
         
         validServersAndSites = {}
         tableau_app_info = {}
         userver=userver.upper()
-       
+        print(f"control entered to validate_Server_site with initial server name {userver} and site name {usite}")
         #data = get_env()
 
         for server in list(configdata["TABLEAU_ENV"].keys()):
@@ -99,12 +157,13 @@ class TableauApp:
         #print(f"1: value of the server and sites ..{validServersAndSites} ")
 
         if userver  in [k.upper() for k in validServersAndSites.keys()]:
-            #print(f"2: Provided Server {userver} is Valid Server..")
-            if  usite.upper() == "DEFAULT":
-                usite = ''
+            print(f"2: Provided Server {userver} is Valid Server..")
+            #print(f"3. default site for this server...{configdata['TABLEAU_ENV'][server]['SITES'][0]}")
+            if  usite == "DEFAULT":
+                usite = configdata['TABLEAU_ENV'][server]['SITES'][0]
             
             else:
-                usite = tableau_app_info["TABLEAU_SITE"]= usite
+                usite
 
             #msg= f"3:No Site Provided,Setting site to default  :  {usite} "
             
@@ -158,7 +217,7 @@ class TableauApp:
             #project_items = server.projects.filter(name=top_level_project.name)
             
 
-    def importGroup(self,group_name,role_name="EXPLORER"):
+    def importGroup(self,group_name,role_name="EXPLORER",group_type="local"):
         
         newgroup = TSC.GroupItem(name=group_name,domain_name=tableau_domain)
         if role_name.upper() == "EXPLORER" or role_name.upper() == "CONSUMER":
@@ -172,16 +231,16 @@ class TableauApp:
             newgroup.minimum_site_role = TSC.UserItem.Roles.Explorer
         ## Grant License Upon login to Server - Dont grant License as import
         newgroup.license_mode = TSC.GroupItem.LicenseMode.onLogin
-        #print(f"import group : {group_name}")
-        #print(f"group type : {type(group_name)}")
+        
         try:
-        # call the create method to create the group
-            #print(f"1.importGroup: Group : {newgroup.name} imported to server : {self.serverInfo['TABLEAU_SERVER']} , site : {self.serverInfo['TABLEAU_SITE']}")
-            newgroup = self.tserver.groups.create_AD_group(newgroup)
-            #print("success group import")           
+        # call the create method to create the group (local/AD)
+            if group_type == "local":            
+                newgroup = self.tserver.groups.create(newgroup)
+            else:
+                newgroup = self.tserver.groups.create_AD_group(newgroup)         
             return newgroup
         except:
-            print("2.importGroup: Unable to Import the Group , Please check the AD group name")
+            print("2.importGroup: Unable to Import the Group , Please check the group name")
          
     
     def set_wb_role(self,project,assignee,wb_rule):
@@ -357,7 +416,7 @@ class TableauApp:
         except:
             qres =  '{}'
             
-    def get_workbook_info(self,workbook:str,project:str) ->dict():
+    def get_workbook_info(self,workbook:str,project:str) ->dict:
         req_option = TSC.RequestOptions()
         req_option.filter.add(TSC.Filter(TSC.RequestOptions.Field.Name,
                                  TSC.RequestOptions.Operator.Equals,workbook))
@@ -420,6 +479,82 @@ class TableauApp:
         except Exception as e:
             print(f"Unable to Delete Workbook: , WB Luid {wbluid} Not exist , exception {e}")
             return False
+    
+    def getFieldListFromWorkbook(self,json_content):    
+        # Open a CSV file in write mode
+        with open("./data/tableauInventory.csv", 'w', newline='') as csvfile:
+            # Define the CSV writer and write the header
+            fieldnames = ['workbook_name', 'workbook_owner', 'project_name', 'dashboard_name', 'sheet_name', 'field_name']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+
+            # Extract data from json_content and write to CSV
+            for workbook in json_content['data']['workbooks']:
+                workbook_name = workbook['name']
+                workbook_owner = workbook['owner']['name']  # You can fill this field if available
+                project_name = workbook['projectName']
+                for dashboard in workbook['dashboards']:
+                    dashboard_name = dashboard['name']
+                    for sheet in dashboard['sheets']:
+                        sheet_name = sheet['name']
+                        for field in sheet['datasourceFields']:
+                            field_name = field['name']
+                            # Write row to CSV
+                            writer.writerow({'workbook_name': workbook_name,
+                                            'workbook_owner': workbook_owner,
+                                            'project_name': project_name,
+                                            'dashboard_name': dashboard_name,
+                                            'sheet_name': sheet_name,
+                                            'field_name': field_name})
+          
+       
+
+        
+
+    def query_workbook(self,wbname:str):
+        result = self.tserver.metadata.query(
+
+         """
+         query listWorkbook($wbname: String) {
+              workbooks (filter: {name: $wbname})
+              {
+                name
+                owner{
+                name
+              }
+              projectName
+              dashboards {
+                 name
+                 sheets {
+                    name
+                       datasourceFields {
+                         name
+                        }
+                    }
+                }
+            }
+
+         }""", 
+         {"wbname": wbname} ,
+
+        )
+        if result.get("data"):
+            print("success")
+            self.getFieldListFromWorkbook(result)
+            
+            try:
+                file_path = "./data/tableauInventory.csv"
+                return True, file_path
+            except:
+                print("Error Getting the Tableau Inventory csv file")
+            
+
+        if result.get("errors"):
+            print("### Errors/Warnings:")
+            print(result["errors"])
+            return False,None
+
+       
 
     def analyze_workbook(self,workbook:str) ->dict:
         #print(f"..inside analyze workbook {workbook}") 
@@ -552,17 +687,40 @@ class ParseAndValidateUserQuery:
         parts = re.split(r"\s*(\w+)=", uquery)
         print(parts)
         uquery_dict = dict(zip(parts[1::2], parts[2::2]))
-        if "server" not in uquery_dict.keys():
+        validServersAndSites ={}
+
+        for server in list(configdata["TABLEAU_ENV"].keys()):
+            validServersAndSites[server] = configdata['TABLEAU_ENV'][server]['SITES']
+
+        userserver = uquery_dict.get('server','DEFAULT')
+        usersite =  uquery_dict.get('site',None)
+        bool_retval,server_retval,site_retval = validate_query(userserver,usersite)
+        print(f"retunr value from validat query func  {bool_retval} , {server_retval}, {site_retval}")
+        if bool_retval:
+            usersite = configdata['TABLEAU_ENV'][server_retval]['SITES'][0]           
+            uquery_dict['server'] = userserver
+            uquery_dict['site'] =   usersite
+            uquery_dict['cmd'] = uquery_dict['cmd'].lower()
+            return True , uquery_dict
+        else:
+            return False ,uquery_dict
+    '''
+        if ("server" not in uquery_dict.keys()) :
             uquery_dict['server']='DEFAULT'
-            uquery_dict['site']='DEFAULT'
-            #print(f"1.get_query_dict : Set server to default as no server provided ..")
+            
+            print(f"1.get_query_dict : Set server to default as no server provided ..")
         if "site" not in uquery_dict.keys():
-            uquery_dict['site']='selfservice'
-            #print(f"2.get_query_dict: Set site to default as no site provided ..")
+            uquery_dict['site']='DEFAULT'
+            print(f"2.get_query_dict: Set site to default as no site provided ..")
+        if ("server" not in uquery_dict.keys()) and ("site" in uquery_dict.keys()):
+            uquery_dict['server']='DEFAULT'
+            uquery_dict['server']= uquery_dict['site']
+    
+
         uquery_dict['cmd'] = uquery_dict['cmd'].lower()
         return uquery_dict
         #dict(zip(parts[1::2], parts[2::2]))
-
+    '''
     def is_valid_command(self,ucommand:str)->bool:
         if ucommand in valid_user_commands:
             #print(f"1.is_valid_command : command specified valid...")
@@ -588,6 +746,7 @@ class ParseAndValidateUserQuery:
         elif user_query_kiv_str['cmd'] == "import-group":
             user_query_kiv_str['group_name'] = submission['group_name']
             user_query_kiv_str['role_name'] = submission['role_name']
+            user_query_kiv_str['group_type'] = submission['group_type']
         elif user_query_kiv_str['cmd'] == "grant-role":
             user_query_kiv_str['project_name'] = submission['project_name']
             user_query_kiv_str['group_name'] = submission['group_name']
@@ -597,7 +756,7 @@ class ParseAndValidateUserQuery:
             user_query_kiv_str['schedule_name'] = submission['schedule_name']
 
         #print(f"1.get_user_dialog_data.......{user_query_kiv_str}")
-        return user_query_kiv_str
+        return True , user_query_kiv_str
 
 class TableauAppExceptions(Exception):
 
@@ -613,19 +772,21 @@ class UtilityClass:
         loader = FileSystemLoader(searchpath="templates")
         environment = Environment(loader=loader)
         template_file = environment.get_template("wb_lineage_template.jinja")
-        result_file = f"data/workbookinfo-{workbook_lineage['workbook_name']}"
+        result_file = f"./data/workbookinfo-{workbook_lineage['workbook_name']}"
         result_file = result_file.replace(" ","")
         result_file_html = result_file+".html"
         result_file_pdf = result_file+".pdf"
 
         with open(result_file_html, mode="w", encoding="utf-8") as result:
             result.write(template_file.render(workbook_lineage=workbook_lineage))
-        if file_format =="pdf":
+            print(f"file format passed = {file_format}")
+        if file_format == "pdf":
                 
                 try:
-                    pdfkit.from_file(result_file_html,result_file_pdf) 
+                    pdfkit.from_file(result_file_html,result_file_pdf,options={"enable-local-file-access": ""}) 
                     return result_file_pdf 
-                except:
-                    return result_file_pdf
+                except Exception as err:
+                    print(f"generating   pdf file failed , path : {result_file_pdf} , Error  : {err}")
+                    #return result_file_pdf
                       
         return result_file_html     
