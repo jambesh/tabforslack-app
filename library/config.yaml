@@ -13,8 +13,11 @@
 
 TABLEAU_ENV:
     PRD:
-        SERVER: "https://yourtableau.prodserver.com"
+#  replace the url below with your tableau server url
+        SERVER: "https://10ax.online.tableau.com"
         SITES:
+# replace the site below with the site you have on your server, the first site is the default site.
+          - "sneakpi"
           - "SelfService"
           - "Default"
           - "Research"
@@ -22,12 +25,13 @@ TABLEAU_ENV:
           - "Cloud"
           - "Sales"
         TOKEN_NAME: "prod-tab-token"
-        TOKEN_SECRET: "Replace with your tableau production secret for the token above"
-        SVC_USER: "Replace this with your Tableau user "
-        SVC_PASS: "Replaec this with your tableau user password"
+        TOKEN_SECRET: "YjjzUIRYOURTOKENgoes@here4ChySgqdxiFt07X9l"
+        # if you user id/password, you need to update below 
+        SVC_USER: "jambeshe@xx.com"
+        SVC_PASS: "xxxxxx@2222xx"
 
     STG:
-        SERVER: "https://yourtableau.testserver.com"
+        SERVER: "https://tableaustg.testserver.com"
         SITES:
           - "SelfService"
         TOKEN_NAME:  "stage-tab-token"
@@ -36,13 +40,13 @@ TABLEAU_ENV:
         SVC_PASS: "Replaec this with your tableau user password"
 
     DEV:
-        SERVER: "https://yourtableau.devserver.com"
+        SERVER: "https://tableaudev.devserver.com"
         SITES:
           - "SelfService"
           - "Default"
         TOKEN_NAME: "dev-tab-token"
-        TOKEN_SECRET: "Replace with the dev Token Secret"
-        SVC_USER: "Replace this with your dev Tableau user"
+        TOKEN_SECRET: "Replace with the Token Secret"
+        SVC_USER: "Replace this with your Tableau user"
         SVC_PASS: "Replaec this with your tableau user password"
         
     RND:
@@ -50,21 +54,23 @@ TABLEAU_ENV:
         SITES:
           - "Default"
         TOKEN_NAME: "tableaurnd"
-        TOKEN_SECRET: "tableau token secret"
+        TOKEN_SECRET: "n+2bghmHSCK-THIS-IS-SAMPLE-fFDYrRUyHwI6-TOKEN-Q0wv337lxKCu"
         SVC_USER: "tableau r&d user "
         SVC_PASS: "r &d password"
 
 # If no Server or Site Specified ,  This section will be use for default operation.
 # You can change this section to make your own default server and site
-## Specify the server name  which will be use as default if no server name specified by user.
+
     DEFAULT:     
-        SERVER: "https://tableau.defaultserver.com"
+        SERVER: "https://10ax.online.tableau.com"
         SITES: 
-          - "SelfService"
-        TOKEN_NAME: "tabdev"
-        TOKEN_SECRET: "1UFSXlMiReaZ78M1PJedbiTe- tableau token secret"
-        SVC_USER: "tableauuser"
-        SVC_PASS: "tableau passowrd"
+          - "sneakpi"
+        TOKEN_NAME: "prod-tab-token"
+        TOKEN_SECRET: "REPLACE TABLEAU TOKEN HERE, YOU MAY KEEP THE SAME TOKEN NAME TO AVOID OTHER CHANGES IN CODE"
+
+ #      IF YOU WANT TO USE USER ID/PASSWORD INSTEAD UPDATE YOUR TABLEAU USERID/PASS BELOW FOR TESTING.
+        SVC_USER: "jambesh@xxx.com"
+        SVC_PASS: "xxx@2yyy24"
 
 
 ## Replace your 'yourcompany domain with actual company domain below'
@@ -75,19 +81,23 @@ TABLEAU_DOMAIN:
 # Provide Slack App name, app token, bot secret, slack slash command that you configured in slack.
 # below are example of slack sandbox and slack production, 
 
+## Slack Sandbox for testing 
 SLACK_ENV_SBOX:
-  SLACK_APP_NAME: "tabslash"
-  SLACK_APP_TOKEN: "your sandbox app token"
-  SLACK_BOT_TOKEN: "your bot token"
-  SLACK_COMMAND_NAME: "/tabforslack"
-
-SLACK_ENV:
   SLACK_APP_NAME: "tabforslack"
-  SLACK_APP_TOKEN: "Your App token"
-  SLACK_BOT_TOKEN: "Your Bot Token"
+  SLACK_APP_TOKEN: "xapp-1-IF YOU HAVE SANDBOX FOR TESTING , UPDATE THE SLACK SANDBOX APP TOKEN"
+  SLACK_BOT_TOKEN: "xoxb-IF YOU HAVE SANDBOX FOR TESTING , UPDATE THE SLACK BOT  TOKEN"
   SLACK_COMMAND_NAME: "/tabforslack"
 
-## Define Valid Commands Users can use from Slack slash prompt,  You add new command here and change the main Library
+## Slack production workspace 
+SLACK_ENV:
+  SLACK_APP_NAME: "tabforslack"                   
+  SLACK_APP_TOKEN: "Replace this with your Slack APP TOKEN"
+  SLACK_BOT_TOKEN: "xoxb-REPLACE THIS WITH YOUR SLACK BOT TOKEN"
+  SLACK_COMMAND_NAME: "/tabforslack"
+
+## change below if you want to add/modify  new functionality  ..if you change here, you also need to change in the app.py and
+## AppInfo.py file under library -
+## Define Valid Commands Users can use from Slack slash prompt,  You can add new command here and change the main Library
 #  to add functionality specific to the new command.
 
 VALID_SLACK_USER_COMMAND:
@@ -103,6 +113,8 @@ VALID_SLACK_USER_COMMAND:
     - "analyze-workbook"
     - "analyze-datasource"
     - "schedule-flow"
+    
+   
 
 ## To ease the Role assignment , define what each role can do.
 
